@@ -55,12 +55,42 @@ export const SERVICES = [
 ];
 
 export const PORTFOLIO_ITEMS = [
-  { id: 1, title: 'Business Cards', category: 'Offset Printing' },
-  { id: 2, title: 'Brochures', category: 'Offset Printing' },
-  { id: 3, title: 'Labels & Stickers', category: 'Screen Printing' },
-  { id: 4, title: 'Posters', category: 'Digital Printing' },
-  { id: 5, title: 'Packaging Prints', category: 'Screen Printing' },
-  { id: 6, title: 'Certificates', category: 'Digital Printing' }
+  { 
+    id: 1, 
+    title: 'Business Cards', 
+    category: 'Offset Printing',
+    image: '/images/portfolio/image.png'
+  },
+  { 
+    id: 2, 
+    title: 'Brochures', 
+    category: 'Offset Printing',
+    image: '/images/portfolio/image1.png'
+  },
+  { 
+    id: 3, 
+    title: 'Labels & Stickers', 
+    category: 'Screen Printing',
+    image: '/images/portfolio/image2.png'
+  },
+  { 
+    id: 4, 
+    title: 'Posters', 
+    category: 'Digital Printing',
+    image: '/images/portfolio/image.png'
+  },
+  { 
+    id: 5, 
+    title: 'Packaging Prints', 
+    category: 'Screen Printing',
+    image: '/images/portfolio/image2.png'
+  },
+  { 
+    id: 6, 
+    title: 'Certificates', 
+    category: 'Digital Printing',
+    image: '/images/portfolio/image.png'
+  }
 ];
 
 export const BREAKPOINTS = {

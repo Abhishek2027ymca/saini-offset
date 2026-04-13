@@ -7,10 +7,10 @@ export default function Footer() {
       style={{
         backgroundColor: colors.footer,
         color: 'white',
-        padding: '60px 40px',
+        padding: '60px 20px',
         textAlign: 'center',
-        marginTop: '0',
-        width: '100%'
+        width: '100vw',
+        marginLeft: 'calc(-50vw + 50%)'
       }}
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
@@ -25,5 +25,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-  )
+  );
 }

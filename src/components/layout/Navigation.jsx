@@ -29,12 +29,15 @@ export default function Navigation({ onScrollToSection }) {
     <nav
       style={{
         backgroundColor: colors.bgWhite,
-        borderBottom: `1px solid ${colors.borderLight}`,
+        borderBottom: `2px solid ${colors.borderLight}`,
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-        width: '100%'
+        boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+        width: '100%',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)'
       }}
     >
       <div style={{ padding: isMobile ? '0 20px' : '0 40px' }}>
@@ -45,23 +48,45 @@ export default function Navigation({ onScrollToSection }) {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            height: '70px'
+            height: isMobile ? '65px' : '80px',
+            gap: '40px'
           }}
         >
+          {/* LOGO SECTION */}
           <div
             style={{
-              fontSize: '22px',
-              fontWeight: '800',
-              color: colors.primary,
-              cursor: 'pointer'
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              cursor: 'pointer',
+              minWidth: 'fit-content'
             }}
             onClick={() => onScrollToSection('home')}
           >
-            SAINI
+            <img
+              src="/images/logo.png"
+              alt="SAINI Logo"
+              style={{
+                height: isMobile ? '40px' : '50px',
+                width: 'auto',
+                objectFit: 'contain'
+              }}
+            />
+            <div
+              style={{
+                fontSize: isMobile ? '18px' : '22px',
+                fontWeight: '800',
+                color: colors.primary,
+                letterSpacing: '-0.5px'
+              }}
+            >
+              SAINI
+            </div>
           </div>
 
+          {/* DESKTOP MENU */}
           {!isMobile && (
-            <div style={{ display: 'flex', gap: '50px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '60px', alignItems: 'center', flex: 1 }}>
               {navItems.map(item => (
                 <button
                   key={item}
@@ -73,23 +98,37 @@ export default function Navigation({ onScrollToSection }) {
                     fontSize: '15px',
                     color: colors.textPrimary,
                     fontWeight: '600',
-                    transition: 'color 0.3s'
+                    transition: 'all 0.3s ease',
+                    paddingBottom: '4px',
+                    borderBottom: '2px solid transparent',
+                    position: 'relative'
                   }}
-                  onMouseEnter={(e) => (e.target.style.color = colors.primary)}
-                  onMouseLeave={(e) => (e.target.style.color = colors.textPrimary)}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = colors.primary;
+                    e.target.style.borderBottom = `2px solid ${colors.primary}`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = colors.textPrimary;
+                    e.target.style.borderBottom = '2px solid transparent';
+                  }}
                 >
                   {item}
                 </button>
               ))}
-              <Button
-                variant="primary"
-                onClick={() => (window.location.href = `tel:${primaryPhone}`)}
-              >
-                Call
-              </Button>
             </div>
           )}
 
+          {/* CALL BUTTON - DESKTOP */}
+          {!isMobile && (
+            <Button
+              variant="primary"
+              onClick={() => (window.location.href = `tel:${primaryPhone}`)}
+            >
+               Call
+            </Button>
+          )}
+
+          {/* MOBILE MENU BUTTON */}
           {isMobile && (
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -100,7 +139,9 @@ export default function Navigation({ onScrollToSection }) {
                 color: colors.textPrimary,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                padding: '8px',
+                transition: 'transform 0.3s'
               }}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -108,17 +149,32 @@ export default function Navigation({ onScrollToSection }) {
           )}
         </div>
 
+        {/* MOBILE MENU */}
         {mobileMenuOpen && isMobile && (
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '12px',
+              gap: '16px',
               paddingBottom: '20px',
-              borderTop: `1px solid ${colors.borderLight}`,
-              marginTop: '15px'
+              borderTop: `2px solid ${colors.borderLight}`,
+              marginTop: '15px',
+              animation: 'slideDown 0.3s ease'
             }}
           >
+            <style>{`
+              @keyframes slideDown {
+                from {
+                  opacity: 0;
+                  transform: translateY(-10px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+            `}</style>
+            
             {navItems.map(item => (
               <button
                 key={item}
@@ -131,8 +187,11 @@ export default function Navigation({ onScrollToSection }) {
                   color: colors.textPrimary,
                   fontWeight: '600',
                   textAlign: 'left',
-                  padding: '10px 0'
+                  padding: '12px 0',
+                  transition: 'color 0.3s'
                 }}
+                onMouseEnter={(e) => (e.target.style.color = colors.primary)}
+                onMouseLeave={(e) => (e.target.style.color = colors.textPrimary)}
               >
                 {item}
               </button>
@@ -142,7 +201,7 @@ export default function Navigation({ onScrollToSection }) {
               fullWidth
               onClick={() => (window.location.href = `tel:${primaryPhone}`)}
             >
-              Call Now
+              📞 Call Now
             </Button>
           </div>
         )}
