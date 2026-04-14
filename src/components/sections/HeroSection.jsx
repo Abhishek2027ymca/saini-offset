@@ -333,9 +333,9 @@ export default function HeroSection({ onScrollToSection }) {
                 alt="SAINI Services"
                 style={{
                   width: isMobile ? '80%' : '100%',
-                  height: isMobile ? '80%' : '100%',
+                  height: isMobile ? '80%' : '110%',
                   objectFit: 'contain',
-                  opacity: 0.6
+                  opacity: 0.8
                 }}
               />
             </div>
