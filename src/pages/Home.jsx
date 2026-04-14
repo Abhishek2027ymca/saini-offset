@@ -343,30 +343,58 @@
 //   );
 // }
 
-import { useState } from 'react';
-import Navigation from '../components/layout/Navigation';
-import HeroSection from '../components/sections/HeroSection';
-import ServicesSection from '../components/sections/ServicesSection';
-import PortfolioSection from '../components/sections/PortfolioSection';
-import ContactSection from '../components/sections/ContactSection';
-import Footer from '../components/layout/Footer';
-// import FloatingWhatsApp from '../components/common/FloatingWhatsApp';
+// import { useState } from 'react';
+// import Navigation from '../components/layout/Navigation';
+// import HeroSection from '../components/sections/HeroSection';
+// import ServicesSection from '../components/sections/ServicesSection';
+// import PortfolioSection from '../components/sections/PortfolioSection';
+// import ContactSection from '../components/sections/ContactSection';
+// import Footer from '../components/layout/Footer';
+
+
+// import Navigation from "../components/layout/Navigation";
+// import HeroSection from "../components/sections/HeroSection";
+// import Footer from "../components/layout/Footer";
+
+// // import FloatingWhatsApp from '../components/common/FloatingWhatsApp';
+
+// export default function Home() {
+//   const scrollToSection = (id) => {
+//     const element = document.getElementById(id);
+//     element?.scrollIntoView({ behavior: 'smooth' });
+//   };
+
+//   return (
+//     <>
+//       <Navigation onScrollToSection={scrollToSection} />
+//       <HeroSection onScrollToSection={scrollToSection} />
+//       <ServicesSection />
+//       <PortfolioSection />
+//       <ContactSection />
+//       <Footer />
+//       {/* <FloatingWhatsApp /> */}
+//     </>
+//   );
+// }
+
+
+
+import Navigation from "../components/layout/Navigation";
+import HeroSection from "../components/sections/HeroSection";
+import Footer from "../components/layout/Footer";
+import { useEffect } from "react";
+
 
 export default function Home() {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
-      <Navigation onScrollToSection={scrollToSection} />
-      <HeroSection onScrollToSection={scrollToSection} />
-      <ServicesSection />
-      <PortfolioSection />
-      <ContactSection />
+      <Navigation />
+      <HeroSection />
       <Footer />
-      {/* <FloatingWhatsApp /> */}
     </>
   );
 }
